@@ -1,5 +1,7 @@
 """Nightly ETL entry point."""
 
+from retry import with_retry
+
 
 def extract(source):
     return [{"id": i, "amount": i * 10} for i in range(source)]
@@ -15,7 +17,8 @@ def load(rows):
 
 
 def main():
-    return load(transform(extract(5)))
+    rows = transform(extract(5))
+    return with_retry(lambda: load(rows))
 
 
 if __name__ == "__main__":
