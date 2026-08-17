@@ -1,3 +1,0 @@
-TODO from the March planning session - move this into the wiki.
-- check warehouse partitioning
-- ask ops about the retry window
